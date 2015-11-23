@@ -1,0 +1,29 @@
+import java.io.*;
+
+public class Task {
+    public static void main(String[] args)throws IOException{
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String name1 = reader.readLine();
+        String name2 = reader.readLine();
+        String name3 = reader.readLine();
+        FileOutputStream file1 = new FileOutputStream(name1);
+        FileInputStream file2 = new FileInputStream(name2);
+        FileInputStream file3 = new FileInputStream(name3);
+        byte[] f2 = new byte[file2.available()];
+        byte[] f3 = new byte[file3.available()];
+        while (file2.available() > 0){
+            int data = file2.read(f2);
+            file1.write(f2);
+        }
+        while (file3.available() > 0){
+            int data = file3.read(f3);
+            file1.write(f3, file2.available(), data);
+        }
+
+        reader.close();
+        file1.close();
+        file2.close();
+        file3.close();
+    }
+}
+
