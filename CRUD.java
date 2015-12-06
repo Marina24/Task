@@ -147,7 +147,7 @@ public class CRUD {
                     file2.write(i.getBytes());
                     file2.write(("\r\n").getBytes());
                 }
-                file2.close();
+               
         }
 
     }
